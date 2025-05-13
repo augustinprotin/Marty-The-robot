@@ -31,6 +31,10 @@ def detecter_couleur(val_mes):
     elif 170 <= val_mes <= 200:
         return "jaune"
 
+import sys
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
+from PyQt6.QtCore import *
 
 if __name__ == '__main__':
     couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]  
@@ -40,7 +44,6 @@ if __name__ == '__main__':
 
     print("\nCalibration terminée")
 
-<<<<<<< HEAD
     # Détection en boucle
     while True:
         input("\nPlace Marty sur une zone et appuie sur Entrée pour détecter la couleur...")
@@ -53,7 +56,10 @@ if __name__ == '__main__':
         if continuer.lower() != 'o':
             print("Fin du programme.")
             break
-=======
+
+
+    #ne pas oublier de se connecet au wifi "wifibotlab" !
+
     my_marty = Marty("wifi", "192.168.0.101")
     app = QApplication(sys.argv)
     fenetre = MaFenetre()
@@ -105,4 +111,3 @@ class MaFenetre(QMainWindow):
 
     def reagir_au_clic(self, nom):
         print(f"✅ Clic sur le bouton : {nom}")
->>>>>>> 5b0072854fd64b0697d40d9679e50eb30c94eb32

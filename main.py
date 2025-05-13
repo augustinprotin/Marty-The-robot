@@ -1,10 +1,8 @@
-#1er fichier du projet Marty The Robot
-def main():
-    print("Notre projet sera le meilleur")
+from martypy import Marty
 
+if __name__ == '__main__':
 
+    #ne pas oublier de se connecet au wifi "wifibotlab" !
 
-if __name__ == "__main__":
-    main()
-
-#Salut c est un test de commit
+    my_marty = Marty("wifi", "192.168.0.101")
+    my_marty.kick()

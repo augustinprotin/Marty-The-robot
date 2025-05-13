@@ -2,6 +2,7 @@ from martypy import Marty
 import keyboard
 
 def celebration():
+    my_marty.celebrate(4000)
     my_marty.dance()
     my_marty.circle_dance()
     my_marty.wave('left')

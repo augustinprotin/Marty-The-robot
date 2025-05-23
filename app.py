@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import MartyClass
+from capteur_batterie import *
 
 class MaFenetre(QMainWindow):
     def __init__(self):
@@ -30,7 +31,10 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
         self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
-        self.ajouter_bouton("clavier", "ouioui", 500, 500)
+
+        #affiche marty pas connecté
+        self.afficher_image_marty()
+
 
         #creation de la textbox
         self.textbox = QLineEdit(self)
@@ -44,7 +48,32 @@ class MaFenetre(QMainWindow):
 
         self.texte_saisi = ""  # variable pour stocker le texte
 
-
+    def afficher_image_marty(self,perdu_connect=0):
+        # Image
+        try :
+            print("clear")
+            self.image_label.clear()
+            self.text_label.clear()
+        except Exception as e:
+            pass #si il y a une image, il la clear avant
+        if(perdu_connect == 1):
+            self.image_label = QLabel(self)
+            pixmap = QPixmap("images/heureux.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
+            #Message
+            self.texte_label = QLabel("Marty est connecté", self)
+            self.texte_label.setGeometry(255,30, 200, 30)
+        if(perdu_connect == 0):
+            self.image_label = QLabel(self)
+            pixmap = QPixmap("images/perdu.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
+            #Message
+            self.texte_label = QLabel("Marty est déconnecté", self)
+            self.texte_label.setGeometry(255,30, 200, 30)
 
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
@@ -52,11 +81,14 @@ class MaFenetre(QMainWindow):
             print(f"IP testé : {self.texte_saisi}")
             self.my_marty = MartyClass.MartyTheRobot("wifi", str(self.texte_saisi))
             self.my_marty.GetMarty().disco_color("blue")
-            #my_marty = Marty("wifi", "192.168.0.101")
+            self.afficher_image_marty(1)
+
+
 
         except Exception as e:
             print(f"Erreur attrapée : {e}")
-        
+            self.afficher_image_marty()
+
     def ajouter_bouton(self, nom, chemin, x,y):
         bouton = QPushButton(self)
         bouton.setIcon(QIcon(chemin))
@@ -69,31 +101,39 @@ class MaFenetre(QMainWindow):
         self.boutons[nom] = bouton
 
     def reagir_au_clic(self, nom):
-        print(f"✅ Clic sur le bouton : {nom}")
-        if(nom == "fleche-haut"):
-            print(f"il est censé avancer")
-            self.my_marty.goingForward()
+        try :
+            print(f"✅ Clic sur le bouton : {nom}")
+            if(nom == "fleche-haut"):
+                print(f"il est censé avancer")
+                self.my_marty.goingForward()
 
-        elif(nom == "fleche-bas" ):
-            self.my_marty.goingBackward()
+            elif(nom == "fleche-bas" ):
+                self.my_marty.goingBackward()
 
-        elif(nom == "fleche-gauche" ):
-            self.my_marty.goingLeft()
+            elif(nom == "fleche-gauche" ):
+                self.my_marty.goingLeft()
 
-        elif(nom == "fleche-droite"):
-            self.my_marty.goingRight()
+            elif(nom == "fleche-droite"):
+                self.my_marty.goingRight()
 
-        elif (nom == "tourner-gauche"):
-            self.my_marty.turnLeft()
+            elif (nom == "tourner-gauche"):
+                self.my_marty.turnLeft()
 
-        elif (nom == "tourner-droite"):
-            self.my_marty.turnRight()
+            elif (nom == "tourner-droite"):
+                self.my_marty.turnRight()
 
-        elif (nom == "emotions"):
-            self.my_marty.looking("angry")
+            elif (nom == "emotions"):
+                self.my_marty.looking("angry")
 
-        elif (nom == "lecture danse"):
-            self.my_marty.celebration()
+            elif (nom == "batterie"):
+                print ("appel fonction")
+                capteur_batterie(self)
+
+            elif (nom == "lecture danse"):
+                self.my_marty.celebration()
+        except Exception :
+            pass
+
 
         #elif (nom == "clavier"):
         #    self.my_marty.check_keyboard(event)

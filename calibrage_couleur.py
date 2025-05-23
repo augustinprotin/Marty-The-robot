@@ -1,6 +1,6 @@
 from martypy import Marty
 
-my_marty = Marty("wifi", "192.168.0.107")
+my_marty = Marty("wifi", "192.168.0.101")
 
 # Dictionnaire pour stocker les seuils de réflexion associés à chaque couleur
 seuils_couleurs = {}

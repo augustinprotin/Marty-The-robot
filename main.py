@@ -1,102 +1,40 @@
-from martypy import Marty
 import keyboard
-
-def celebration():
-    my_marty.celebrate(4000)
-    my_marty.dance()
-    my_marty.circle_dance()
-    my_marty.wave('left')
-
-def goingLeft():
-    my_marty.stand_straight(200)
-    my_marty.sidestep("left", 2, 50)
-
-
-def goingRight():
-    my_marty.stand_straight(200)
-    my_marty.sidestep("right", 2, 50)
-
-def goingForward():
-    #for i in range(0, 2):
-        my_marty.walk(2, 'auto', 0, 20, 1500, True)
-        my_marty.stand_straight(200)
-
-
-def goingBackward():
-    my_marty.stand_straight(200)
-    my_marty.walk(2, 'auto', 0, -20)
-
-def turnRight():
-    for i in range(0, 5):
-        my_marty.stand_straight(200)
-        my_marty.walk(2, 'auto', 5, 5)
-
-def turnLeft():
-    my_marty.stand_straight(200)
-    for i in range(0, 5):
-        my_marty.walk(2, 'auto', -5, 5)
-
-def looking(emotion):
-    if(emotion == 'angry'):
-        my_marty.disco_color('red')
-        my_marty.eyes('angry', 800)
-
-    if (emotion == 'normal'):
-        my_marty.disco_color('white')
-        my_marty.eyes('normal', 800)
-
-    if (emotion == 'wide'):
-        my_marty.disco_color('green')
-        my_marty.eyes((40) , 800)
-
-    if (emotion == 'wiggle'):
-        my_marty.disco_color('blue')
-        my_marty.eyes('wiggle', 800)
-
+import MartyClass
 
 if __name__ == '__main__':
 
     #ne pas oublier de se connecet au wifi "wifibotlab" !
 
-    my_marty = Marty("wifi", "192.168.0.107")
-    my_marty.stand_straight(200)
-    #goingLeft()
-    #goingForward()
-    #goingRight()
-    #goingBackward()
-    #turnRight()
-    #turnLeft()
-    looking('angry')
-    my_marty.disco_color('blue')
-    #goingForward()
+    my_marty = MartyClass.MartyTheRobot("wifi", "192.168.0.100")
+    my_marty.GetMarty().stand_straight(200)
     yes = True
     while(yes == True):
         if keyboard.is_pressed('l'):
             yes = False
 
         elif keyboard.is_pressed('z'):
-            goingForward()
+            my_marty.goingForward()
 
         elif keyboard.is_pressed('s'):
-            goingBackward()
+            my_marty.goingBackward()
 
         elif keyboard.is_pressed('d'):
-            goingRight()
+            my_marty.goingRight()
 
         elif keyboard.is_pressed('q'):
-            goingLeft()
+            my_marty.goingLeft()
 
         elif keyboard.is_pressed('c'):
-            celebration()
+            my_marty.celebration()
 
         elif keyboard.is_pressed('1'):
-            looking('angry')
+            my_marty.looking('angry')
 
         elif keyboard.is_pressed('2'):
-            looking('normal')
+            my_marty.looking('normal')
 
         elif keyboard.is_pressed('3'):
-            looking('wide')
+            my_marty.looking('wide')
 
         elif keyboard.is_pressed('4'):
-            looking('wiggle')
+            my_marty.looking('wiggle')

@@ -4,16 +4,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 
-if __name__ == '__main__':
 
-    #ne pas oublier de se connecet au wifi "wifibotlab" !
-
-    my_marty = Marty("wifi", "192.168.0.101")
-    app = QApplication(sys.argv)
-    fenetre = MaFenetre()
-    fenetre.show()
-    sys.exit(app.exec())
-    my_marty.kick()
 
 
 #----------------- classe fenetre
@@ -51,7 +42,7 @@ class MaFenetre(QMainWindow):
         bouton.setIcon(QIcon(chemin))
         bouton.setIconSize(QSize(100, 100))
         bouton.setGeometry(x, y, 100, 100)
-        bouton.setStyleSheet("border: none;")  # Supprime le cadre du bouton
+        #bouton.setStyleSheet("border: none;")  # Supprime le cadre du bouton
 
         bouton.clicked.connect(lambda checked, n=nom: self.reagir_au_clic(n))
 
@@ -59,3 +50,15 @@ class MaFenetre(QMainWindow):
 
     def reagir_au_clic(self, nom):
         print(f"✅ Clic sur le bouton : {nom}")
+
+
+if __name__ == '__main__':
+    
+    #ne pas oublier de se connecet au wifi "wifibotlab" !
+
+    '''my_marty = Marty("wifi", "192.168.0.101")'''
+    app = QApplication(sys.argv)
+    fenetre = MaFenetre()
+    fenetre.show()
+    sys.exit(app.exec())
+    my_marty.kick()

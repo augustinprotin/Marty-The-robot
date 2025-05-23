@@ -1,10 +1,10 @@
 import keyboard
-import MartyClass
-from martypy import Marty
-import sys
-from PyQt6.QtWidgets import *
-from PyQt6.QtGui import *
-from PyQt6.QtCore import *
+#import MartyClass
+#from martypy import Marty
+#import sys
+#from PyQt6.QtWidgets import *
+#from PyQt6.QtGui import *
+#from PyQt6.QtCore import *
 from app import *
 #from calibrage import *
 
@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     #ne pas oublier de se connecet au wifi "wifibotlab" !
 
+    '''
     my_marty = MartyClass.MartyTheRobot("wifi", "192.168.0.100")
     my_marty.GetMarty().stand_straight(200)
     yes = True
@@ -50,9 +51,10 @@ if __name__ == '__main__':
 
         elif keyboard.is_pressed('4'):
             my_marty.looking('wiggle')
-    '''my_marty = Marty("wifi", "192.168.0.101")'''
+            
+    '''
+
     appli = QApplication(sys.argv)
     fenetre = MaFenetre()
     fenetre.show()
     sys.exit(appli.exec())
-    my_marty.kick()

@@ -3,11 +3,14 @@ import sys
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
-
+import MartyClass
+from capteur_batterie import *
 
 class MaFenetre(QMainWindow):
     def __init__(self):
         super().__init__()
+
+
 
         self.setWindowTitle("Application controle de Marty")
         # 🔽 Changer l’icône ici
@@ -41,12 +44,16 @@ class MaFenetre(QMainWindow):
 
         self.texte_saisi = ""  # variable pour stocker le texte
 
+
+
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
         try :
-            my_marty = Marty("wifi", "192.168.0.101")
             print(f"IP testé : {self.texte_saisi}")
-        
+            self.my_marty = MartyClass.MartyTheRobot("wifi", str(self.texte_saisi))
+            self.my_marty.GetMarty().disco_color("blue")
+            #my_marty = Marty("wifi", "192.168.0.101")
+
         except Exception as e:
             print(f"Erreur attrapée : {e}")
         
@@ -63,3 +70,29 @@ class MaFenetre(QMainWindow):
 
     def reagir_au_clic(self, nom):
         print(f"✅ Clic sur le bouton : {nom}")
+        if(nom == "fleche-haut"):
+            print(f"il est censé avancer")
+            self.my_marty.goingForward()
+
+        elif(nom == "fleche-bas" ):
+            self.my_marty.goingBackward()
+
+        elif(nom == "fleche-gauche" ):
+            self.my_marty.goingLeft()
+
+        elif(nom == "fleche-droite"):
+            self.my_marty.goingRight()
+
+        elif (nom == "tourner-gauche"):
+            self.my_marty.turnLeft()
+
+        elif (nom == "tourner-droite"):
+            self.my_marty.turnRight()
+
+        elif (nom == "emotions"):
+            self.my_marty.looking("angry")
+
+        elif (nom == "batterie"):
+            print ("appel fonction")
+            capteur_batterie(self)
+

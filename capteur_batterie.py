@@ -1,10 +1,13 @@
 from martypy import Marty
+from PyQt6.QtWidgets import QMessageBox
 
-my_marty = Marty("wifi", "192.168.0.107")
 
-def capteur_batterie():
-    battery_remain = my_marty.get_battery_remaining()
-    print("Il reste " ,  battery_remain ,  " '%' de batterie" )
 
-if __name__ == '__main__':
-    capteur_batterie()
+def capteur_batterie(fenetre):
+    try:
+        battery_remain = my_marty.get_battery_remaining()
+    except Exception as e:
+        QMessageBox.information(fenetre, "Batterie", f"Marty n est pas connecté\nErreur attrapée : {e}")
+    else:
+        QMessageBox.information(fenetre, "Batterie", f"Il reste {battery_remain}% de batterie")
+

@@ -28,6 +28,26 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
 
+        #creation de la textbox
+        self.textbox = QLineEdit(self)
+        self.textbox.setPlaceholderText("ip de marty")
+        self.textbox.setGeometry(50, 30, 200, 30)
+
+        #creation du bouton valider
+        self.bouton = QPushButton("Valider", self)
+        self.bouton.setGeometry(100, 80, 100, 30)
+        self.bouton.clicked.connect(self.connecterALIp)
+
+        self.texte_saisi = ""  # variable pour stocker le texte
+
+    def connecterALIp(self):
+        self.texte_saisi = self.textbox.text()
+        try :
+            my_marty = Marty("wifi", "192.168.0.101")
+            print(f"IP testé : {self.texte_saisi}")
+        
+        except Exception as e:
+            print(f"Erreur attrapée : {e}")
         
     def ajouter_bouton(self, nom, chemin, x,y):
         bouton = QPushButton(self)

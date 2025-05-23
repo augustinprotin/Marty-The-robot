@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 from app import *
+#from calibrage import *
 
 #----------------- classe fenetre
 #a telecharger :

@@ -32,11 +32,14 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
         self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
 
+        #affiche marty pas connecté
+        self.afficher_image_marty()
+
+
         #creation de la textbox
         self.textbox = QLineEdit(self)
         self.textbox.setPlaceholderText("ip de marty")
         self.textbox.setGeometry(50, 30, 200, 30)
-
         #creation du bouton valider
         self.bouton = QPushButton("Valider", self)
         self.bouton.setGeometry(100, 80, 100, 30)
@@ -44,7 +47,30 @@ class MaFenetre(QMainWindow):
 
         self.texte_saisi = ""  # variable pour stocker le texte
 
+    def afficher_image_marty(self,perdu_connect=0):
+        # Image
+        try :
+            self.image_label.clear()
+            self.text_label.clear()
+        except Exception as e:
+            pass #si il y a une image, il la clear avant
+        
+        self.image_label = QLabel(self)
+        if(perdu_connect == 1):
+            pixmap = QPixmap("images/heureux.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            #Message
+            self.texte_label = QLabel("Marty est connecté", self)
+            self.texte_label.setGeometry(255,30, 200, 30)
 
+        if(perdu_connect == 0):
+            pixmap = QPixmap("images/perdu.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            #Message
+            self.texte_label = QLabel("Marty est déconnecté", self)
+            self.texte_label.setGeometry(255,30, 200, 30)
 
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
@@ -52,10 +78,13 @@ class MaFenetre(QMainWindow):
             print(f"IP testé : {self.texte_saisi}")
             self.my_marty = MartyClass.MartyTheRobot("wifi", str(self.texte_saisi))
             self.my_marty.GetMarty().disco_color("blue")
-            #my_marty = Marty("wifi", "192.168.0.101")
+            self.afficher_image_marty(1)
+
+
 
         except Exception as e:
             print(f"Erreur attrapée : {e}")
+            self.afficher_image_marty()
         
     def ajouter_bouton(self, nom, chemin, x,y):
         bouton = QPushButton(self)

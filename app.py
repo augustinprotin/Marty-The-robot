@@ -98,30 +98,33 @@ class MaFenetre(QMainWindow):
         self.boutons[nom] = bouton
 
     def reagir_au_clic(self, nom):
-        print(f"✅ Clic sur le bouton : {nom}")
-        if(nom == "fleche-haut"):
-            print(f"il est censé avancer")
-            self.my_marty.goingForward()
+        try :
+            print(f"✅ Clic sur le bouton : {nom}")
+            if(nom == "fleche-haut"):
+                print(f"il est censé avancer")
+                self.my_marty.goingForward()
 
-        elif(nom == "fleche-bas" ):
-            self.my_marty.goingBackward()
+            elif(nom == "fleche-bas" ):
+                self.my_marty.goingBackward()
 
-        elif(nom == "fleche-gauche" ):
-            self.my_marty.goingLeft()
+            elif(nom == "fleche-gauche" ):
+                self.my_marty.goingLeft()
 
-        elif(nom == "fleche-droite"):
-            self.my_marty.goingRight()
+            elif(nom == "fleche-droite"):
+                self.my_marty.goingRight()
 
-        elif (nom == "tourner-gauche"):
-            self.my_marty.turnLeft()
+            elif (nom == "tourner-gauche"):
+                self.my_marty.turnLeft()
 
-        elif (nom == "tourner-droite"):
-            self.my_marty.turnRight()
+            elif (nom == "tourner-droite"):
+                self.my_marty.turnRight()
 
-        elif (nom == "emotions"):
-            self.my_marty.looking("angry")
+            elif (nom == "emotions"):
+                self.my_marty.looking("angry")
 
-        elif (nom == "batterie"):
-            print ("appel fonction")
-            capteur_batterie(self)
+            elif (nom == "batterie"):
+                print ("appel fonction")
+                capteur_batterie(self)
+        except Exception :
+            pass
 

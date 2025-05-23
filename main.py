@@ -1,4 +1,5 @@
 import keyboard
+
 #import MartyClass
 #from martypy import Marty
 #import sys
@@ -13,6 +14,11 @@ from app import *
 # pip install PyQt6
 # pip install PyQt6-tools
 
+
+
+
+
+
 if __name__ == '__main__':
 
     #ne pas oublier de se connecet au wifi "wifibotlab" !
@@ -21,4 +27,5 @@ if __name__ == '__main__':
     fenetre = MaFenetre()
     fenetre.show()
     sys.exit(appli.exec())
-    #my_marty.kick()
+
+    # Fonction de contrôle clavier

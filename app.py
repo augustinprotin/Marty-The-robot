@@ -9,7 +9,7 @@ class MaFenetre(QMainWindow):
     def __init__(self):
         super().__init__()
 
-
+        self.my_marty = None
 
         self.setWindowTitle("Application controle de Marty")
         # 🔽 Changer l’icône ici
@@ -30,6 +30,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
         self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
+        self.ajouter_bouton("clavier", "ouioui", 500, 500)
 
         #creation de la textbox
         self.textbox = QLineEdit(self)
@@ -91,4 +92,49 @@ class MaFenetre(QMainWindow):
         elif (nom == "emotions"):
             self.my_marty.looking("angry")
 
+        elif (nom == "lecture danse"):
+            self.my_marty.celebration()
 
+        #elif (nom == "clavier"):
+        #    self.my_marty.check_keyboard(event)
+
+
+
+
+    def getMarty(self):
+        return self.my_marty
+
+    def keyPressEvent(self,event: QKeyEvent):
+        if self.my_marty is None:
+            print("marty est none")
+            return
+
+        key = event.key()
+        print(key)
+        if key == 90:
+            print("marty devrait avancer")
+            self.my_marty.goingForward()
+
+        elif key == 83:
+            self.my_marty.goingBackward()
+
+        elif key == 68:
+            self.my_marty.goingRight()
+
+        elif key == 81:
+            self.my_marty.goingLeft()
+
+        elif key == 67:
+            self.my_marty.celebration()
+
+        elif key == 49:
+            self.my_marty.looking('angry')
+
+        elif key == 50:
+            self.my_marty.looking('normal')
+
+        elif key == 51:
+            self.my_marty.looking('wide')
+
+        elif key == 52:
+            self.my_marty.looking('wiggle')

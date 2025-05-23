@@ -1,4 +1,6 @@
+import keyboard
 from martypy import Marty
+from PyQt6.QtCore import *
 
 
 class MartyTheRobot:
@@ -58,3 +60,6 @@ class MartyTheRobot:
 
     def GetMarty(self):
         return self.my_marty
+
+
+

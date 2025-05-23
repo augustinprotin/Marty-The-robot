@@ -1,4 +1,4 @@
-import keyboard
+#import keyboard
 #import MartyClass
 #from martypy import Marty
 #import sys

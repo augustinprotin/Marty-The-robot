@@ -50,24 +50,26 @@ class MaFenetre(QMainWindow):
     def afficher_image_marty(self,perdu_connect=0):
         # Image
         try :
+            print("clear")
             self.image_label.clear()
             self.text_label.clear()
         except Exception as e:
             pass #si il y a une image, il la clear avant
-        
-        self.image_label = QLabel(self)
         if(perdu_connect == 1):
+            self.image_label = QLabel(self)
             pixmap = QPixmap("images/heureux.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
             #Message
             self.texte_label = QLabel("Marty est connecté", self)
             self.texte_label.setGeometry(255,30, 200, 30)
-
         if(perdu_connect == 0):
+            self.image_label = QLabel(self)
             pixmap = QPixmap("images/perdu.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
             #Message
             self.texte_label = QLabel("Marty est déconnecté", self)
             self.texte_label.setGeometry(255,30, 200, 30)

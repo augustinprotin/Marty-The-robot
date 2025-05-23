@@ -38,15 +38,19 @@ def turnLeft():
 
 def looking(emotion):
     if(emotion == 'angry'):
+        my_marty.disco_color('red')
         my_marty.eyes('angry', 800)
 
     if (emotion == 'normal'):
+        my_marty.disco_color('white')
         my_marty.eyes('normal', 800)
 
     if (emotion == 'wide'):
+        my_marty.disco_color('green')
         my_marty.eyes((40) , 800)
 
     if (emotion == 'wiggle'):
+        my_marty.disco_color('blue')
         my_marty.eyes('wiggle', 800)
 
 
@@ -54,7 +58,7 @@ if __name__ == '__main__':
 
     #ne pas oublier de se connecet au wifi "wifibotlab" !
 
-    my_marty = Marty("wifi", "192.168.0.101")
+    my_marty = Marty("wifi", "192.168.0.107")
     my_marty.stand_straight(200)
     #goingLeft()
     #goingForward()
@@ -84,3 +88,15 @@ if __name__ == '__main__':
 
         elif keyboard.is_pressed('c'):
             celebration()
+
+        elif keyboard.is_pressed('1'):
+            looking('angry')
+
+        elif keyboard.is_pressed('2'):
+            looking('normal')
+
+        elif keyboard.is_pressed('3'):
+            looking('wide')
+
+        elif keyboard.is_pressed('4'):
+            looking('wiggle')

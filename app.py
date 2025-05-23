@@ -17,16 +17,17 @@ class MaFenetre(QMainWindow):
         # 🔽 Dictionnaire d images
         self.boutons = {}
         # Créer plusieurs images avec leur nom
-        self.ajouter_bouton("fleche-haut", "images/fleche-haut.png", 130, 100+410)
-        self.ajouter_bouton("fleche-bas", "images/fleche-bas.png", 130, 300+410)
-        self.ajouter_bouton("fleche-gauche", "images/fleche-gauche.png", 30, 200+410)
-        self.ajouter_bouton("fleche-droite", "images/fleche-droite.png", 230, 200+410)
-        self.ajouter_bouton("calibrage", "images/calibrage.png", 30, 300+410)
-        self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 100+410)
-        self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 100+410)
+        self.ajouter_bouton("fleche-haut", "images/fleche-haut.png", 130, 510)
+        self.ajouter_bouton("fleche-bas", "images/fleche-bas.png", 130, 710)
+        self.ajouter_bouton("fleche-gauche", "images/fleche-gauche.png", 30, 610)
+        self.ajouter_bouton("fleche-droite", "images/fleche-droite.png", 230, 610)
+        self.ajouter_bouton("calibrage", "images/calibrage.png", 30, 710)
+        self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
+        self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
         self.ajouter_bouton("emotions", "images/emotions.png", 1350, 710)
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
+        self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
 
         #creation de la textbox
         self.textbox = QLineEdit(self)

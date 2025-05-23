@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import MartyClass
-import capteur_batterie
+from capteur_batterie import *
 
 class MaFenetre(QMainWindow):
     def __init__(self):
@@ -93,5 +93,6 @@ class MaFenetre(QMainWindow):
             self.my_marty.looking("angry")
 
         elif (nom == "batterie"):
-            capteur_batterie()
+            print ("appel fonction")
+            capteur_batterie(self)
 

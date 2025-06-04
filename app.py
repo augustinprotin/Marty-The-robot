@@ -79,6 +79,13 @@ class MaFenetre(QMainWindow):
             self.texte_label = QLabel("Marty est déconnecté", self)
             self.texte_label.setGeometry(255,30, 200, 30)
 
+        if(perdu_connect == 2):
+            self.image_label = QLabel(self)
+            pixmap = QPixmap("images/reflechis.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
+
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
         try :

@@ -5,7 +5,8 @@ from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import MartyClass
 from capteur_batterie import *
-from capteur_batterie import *
+from capteur_obstacle import *
+import time
 
 class MaFenetre(QMainWindow):
     def __init__(self):
@@ -55,11 +56,11 @@ class MaFenetre(QMainWindow):
         try :
             print("clear")
             self.image_label.clear()
-            self.text_label.clear()
+            #self.text_label.clear()
         except Exception as e:
             #si il y a une image, il la clear avant et initialise le texte
             #self.texte_label = QLabel("Marty est déconnecté", self)
-            pass
+            print(e)
             
         if(perdu_connect == 1):
             self.image_label = QLabel(self)
@@ -67,6 +68,8 @@ class MaFenetre(QMainWindow):
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
             self.image_label.show()
+            
+            print("affichage du sprite 1")
             #Message
             self.texte_label.setText("Marty est connecté") # = QLabel("Marty est connecté", self)
             self.texte_label.setGeometry(255,30, 200, 30)
@@ -76,6 +79,8 @@ class MaFenetre(QMainWindow):
             pixmap = QPixmap("images/perdu.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            
+            print("affichage du sprite 0")
             self.image_label.show()
             #Message
             self.texte_label = QLabel("Marty est déconnecté", self)
@@ -86,6 +91,7 @@ class MaFenetre(QMainWindow):
             pixmap = QPixmap("images/mouvement.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            print("affichage du sprite 2")
             self.image_label.show()
 
         if(perdu_connect == 3):
@@ -93,6 +99,7 @@ class MaFenetre(QMainWindow):
             pixmap = QPixmap("images/couleur.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            print("affichage du sprite 3")
             self.image_label.show()
 
     def connecterALIp(self):
@@ -125,7 +132,7 @@ class MaFenetre(QMainWindow):
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
                 self.afficher_image_marty(2)
-                print(f"il est censé avancer")
+                time.sleep(2)
                 self.my_marty.goingForward()
                 self.afficher_image_marty(1)
 
@@ -141,6 +148,7 @@ class MaFenetre(QMainWindow):
 
             elif(nom == "fleche-droite"):
                 self.afficher_image_marty(2)
+                sleep
                 self.my_marty.goingRight()
                 self.afficher_image_marty(1)
 

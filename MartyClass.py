@@ -6,6 +6,7 @@ from PyQt6.QtCore import *
 class MartyTheRobot:
     def __init__(self, modeConnexion, IpAddress):
         self.my_marty = Marty(modeConnexion, IpAddress)
+        self.seuils_couleurs = {}
 
     def celebration(self):
         self.my_marty.celebrate(4000)
@@ -57,9 +58,15 @@ class MartyTheRobot:
             self.my_marty.disco_color('blue')
             self.my_marty.eyes('wiggle', 800)
 
+    def calibrage(self, couleur_a_calibrer):
+        input(f"\nPlace Marty sur la zone '{couleur_a_calibrer}' et appuie sur Entree pour calibrer...")
+        valeur = self.my_marty.get_ground_sensor_reading("left")
+        print(f"Valeur détectée pour '{couleur_a_calibrer}' : {valeur}")
+        self.seuils_couleurs[couleur_a_calibrer] = valeur
+
+
 
     def GetMarty(self):
         return self.my_marty
-
 
 

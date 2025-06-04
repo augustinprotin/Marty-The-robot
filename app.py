@@ -182,3 +182,34 @@ class MaFenetre(QMainWindow):
 
         elif key == 52:
             self.my_marty.looking('wiggle')
+
+
+        elif key == 54:
+            couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]
+            # Calibration
+            for couleur in couleurs:
+                self.my_marty.calibrage(couleur)
+            print("\nCalibration terminée")
+
+        elif key == 55:
+            input("\nPlace Marty sur une zone et appuie sur Entrée pour détecter la couleur...")
+            valeur_actuelle = self.my_marty.my_marty.get_ground_sensor_reading("left")
+            couleur_detectee = self.detecter_couleur(valeur_actuelle)
+            print(f"Valeur mesurée : {valeur_actuelle}")
+            print(f"Couleur détectée : {couleur_detectee}")
+
+    def detecter_couleur(self, val_mes):
+        if 0 <= val_mes <= 20:
+            return "noir"
+        elif 21 <= val_mes <= 27:
+            return "bleu foncé"
+        elif 28 <= val_mes <= 40:
+            return "vert"
+        elif 42 <= val_mes <= 65:
+            return "bleu clair"
+        elif 66 <= val_mes <= 90:
+            return "rouge"
+        elif 91 <= val_mes <= 110:
+            return "rose"
+        elif 170 <= val_mes <= 200:
+            return "jaune"

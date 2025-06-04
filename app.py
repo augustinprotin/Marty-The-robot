@@ -104,6 +104,9 @@ class MaFenetre(QMainWindow):
 
         self.boutons[nom] = bouton
 
+    def getMartyFromWindow(self):
+        return self.my_marty.GetMarty()
+
     def reagir_au_clic(self, nom):
         try :
             print(f"✅ Clic sur le bouton : {nom}")
@@ -135,8 +138,23 @@ class MaFenetre(QMainWindow):
 
             elif (nom == "lecture danse"):
                 self.my_marty.celebration()
+
+            
+
+        
+        
+        
+        
+        
+        
         except Exception :
             pass
+        
+
+
+
+
+
 
 
         #elif (nom == "clavier"):

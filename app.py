@@ -55,7 +55,10 @@ class MaFenetre(QMainWindow):
             self.image_label.clear()
             self.text_label.clear()
         except Exception as e:
-            pass #si il y a une image, il la clear avant
+            #si il y a une image, il la clear avant et initialise le texte
+            #self.texte_label = QLabel("Marty est déconnecté", self)
+            pass
+            
         if(perdu_connect == 1):
             self.image_label = QLabel(self)
             pixmap = QPixmap("images/heureux.png")
@@ -63,8 +66,9 @@ class MaFenetre(QMainWindow):
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
             self.image_label.show()
             #Message
-            self.texte_label = QLabel("Marty est connecté", self)
+            self.texte_label.setText("Marty est connecté") # = QLabel("Marty est connecté", self)
             self.texte_label.setGeometry(255,30, 200, 30)
+
         if(perdu_connect == 0):
             self.image_label = QLabel(self)
             pixmap = QPixmap("images/perdu.png")

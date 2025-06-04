@@ -100,9 +100,6 @@ class MaFenetre(QMainWindow):
             self.my_marty = MartyClass.MartyTheRobot("wifi", str(self.texte_saisi))
             self.my_marty.GetMarty().disco_color("blue")
             self.afficher_image_marty(1)
-
-
-
         except Exception as e:
             print(f"Erreur attrapée : {e}")
             self.afficher_image_marty()
@@ -175,8 +172,6 @@ class MaFenetre(QMainWindow):
         #    self.my_marty.check_keyboard(event)
 
 
-
-
     def getMarty(self):
         return self.my_marty
 
@@ -217,13 +212,13 @@ class MaFenetre(QMainWindow):
 
 
         elif key == 54:
-            afficher_image_marty(3)
+            self.afficher_image_marty(3)
             couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]
             # Calibration
             for couleur in couleurs:
                 self.my_marty.calibrage(couleur)
             print("\nCalibration terminée")
-            afficher_image_marty(1)
+            self.afficher_image_marty(1)
 
         elif key == 55:
             input("\nPlace Marty sur une zone et appuie sur Entrée pour détecter la couleur...")

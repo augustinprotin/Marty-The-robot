@@ -5,6 +5,7 @@ from app import *
 
 def capteur_obstacle(fenetre):
     try:
+        print('test')
         left_foot = fenetre.getMartyFromWindow().foot_obstacle_sensed('left')
         right_foot = fenetre.getMartyFromWindow().foot_obstacle_sensed('left')
     except Exception as e:

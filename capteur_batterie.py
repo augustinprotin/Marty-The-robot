@@ -5,9 +5,8 @@ from PyQt6.QtWidgets import QMessageBox
 
 def capteur_batterie(fenetre):
     try:
-        int battery_remain = fenetre.my_marty.get_battery_remaining()
+        battery_remain = fenetre.my_marty.get_battery_remaining()
     except Exception as e:
         QMessageBox.information(fenetre, "Batterie", f"Marty n est pas connecté\nErreur attrapée : {e}")
     else:
         QMessageBox.information(fenetre, "Batterie", f"Il reste {battery_remain}% de batterie")
-

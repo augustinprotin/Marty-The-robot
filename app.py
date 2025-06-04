@@ -86,6 +86,13 @@ class MaFenetre(QMainWindow):
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
             self.image_label.show()
 
+        if(perdu_connect == 3):
+            self.image_label = QLabel(self)
+            pixmap = QPixmap("images/couleur.png")
+            self.image_label.setPixmap(pixmap)
+            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.show()
+
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
         try :
@@ -210,11 +217,13 @@ class MaFenetre(QMainWindow):
 
 
         elif key == 54:
+            afficher_image_marty(3)
             couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]
             # Calibration
             for couleur in couleurs:
                 self.my_marty.calibrage(couleur)
             print("\nCalibration terminée")
+            afficher_image_marty(1)
 
         elif key == 55:
             input("\nPlace Marty sur une zone et appuie sur Entrée pour détecter la couleur...")

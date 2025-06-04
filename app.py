@@ -5,6 +5,7 @@ from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 import MartyClass
 from capteur_batterie import *
+from capteur_batterie import *
 
 class MaFenetre(QMainWindow):
     def __init__(self):
@@ -25,6 +26,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("fleche-gauche", "images/fleche-gauche.png", 30, 610)
         self.ajouter_bouton("fleche-droite", "images/fleche-droite.png", 230, 610)
         self.ajouter_bouton("calibrage", "images/calibrage.png", 30, 710)
+        self.ajouter_bouton("obstacle", "images/obstacle.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
         self.ajouter_bouton("emotions", "images/emotions.png", 1350, 710)
@@ -81,7 +83,7 @@ class MaFenetre(QMainWindow):
 
         if(perdu_connect == 2):
             self.image_label = QLabel(self)
-            pixmap = QPixmap("images/reflechis.png")
+            pixmap = QPixmap("images/mouvement.png")
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
             self.image_label.show()
@@ -122,23 +124,35 @@ class MaFenetre(QMainWindow):
         try :
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
+                self.afficher_image_marty(2)
                 print(f"il est censé avancer")
                 self.my_marty.goingForward()
+                self.afficher_image_marty(1)
 
             elif(nom == "fleche-bas" ):
+                self.afficher_image_marty(2)
                 self.my_marty.goingBackward()
+                self.afficher_image_marty(1)
 
             elif(nom == "fleche-gauche" ):
+                self.afficher_image_marty(2)
                 self.my_marty.goingLeft()
+                self.afficher_image_marty(1)
 
             elif(nom == "fleche-droite"):
+                self.afficher_image_marty(2)
                 self.my_marty.goingRight()
+                self.afficher_image_marty(1)
 
             elif (nom == "tourner-gauche"):
+                self.afficher_image_marty(2)
                 self.my_marty.turnLeft()
+                self.afficher_image_marty(1)
 
             elif (nom == "tourner-droite"):
+                self.afficher_image_marty(2)
                 self.my_marty.turnRight()
+                self.afficher_image_marty(1)
 
             elif (nom == "emotions"):
                 self.my_marty.looking("angry")
@@ -147,30 +161,16 @@ class MaFenetre(QMainWindow):
                 print ("appel fonction")
                 capteur_batterie(self)
 
+            elif (nom == "obstacle"):
+                print ("appel fonction")
+                capteur_obstacle(self)
+
             elif (nom == "lecture danse"):
                 self.my_marty.celebration()
-
-            
-
-        
-        
-        
-        
-        
-        
         except Exception :
             pass
-        
-
-
-
-
-
-
-
         #elif (nom == "clavier"):
         #    self.my_marty.check_keyboard(event)
-
 
     def getMarty(self):
         return self.my_marty

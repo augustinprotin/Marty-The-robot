@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
     #ne pas oublier de se connecet au wifi "wifibotlab" !
 
+
     appli = QApplication(sys.argv)
     fenetre = MaFenetre()
     fenetre.show()

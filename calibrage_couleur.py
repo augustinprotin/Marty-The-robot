@@ -24,7 +24,7 @@ def detecter_couleur(val_mes):
         return "rouge"
     elif 91 <= val_mes <= 110:
         return "rose"
-    elif 170 <= val_mes <= 200:
+    elif 120 <= val_mes <= 200:
         return "jaune"
 
 

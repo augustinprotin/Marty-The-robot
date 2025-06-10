@@ -27,6 +27,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("fleche-gauche", "images/fleche-gauche.png", 30, 610)
         self.ajouter_bouton("fleche-droite", "images/fleche-droite.png", 230, 610)
         self.ajouter_bouton("calibrage", "images/calibrage.png", 30, 710)
+        self.ajouter_bouton("quelle-couleur", "images/interrogation.png", 100, 200)
         self.ajouter_bouton("obstacle", "images/obstacle.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
@@ -148,7 +149,6 @@ class MaFenetre(QMainWindow):
 
             elif(nom == "fleche-droite"):
                 self.afficher_image_marty(2)
-                sleep
                 self.my_marty.goingRight()
                 self.afficher_image_marty(1)
 
@@ -184,6 +184,15 @@ class MaFenetre(QMainWindow):
                     self.my_marty.calibrage(couleur, self)
                 print("\nCalibration terminée")
                 self.afficher_image_marty(1)
+
+            elif (nom == "quelle-couleur"):
+                self.afficher_image_marty(3)
+                QMessageBox.information(self, "Couleur ?", "Place Marty sur la zone a détecter...")
+                valeur_actuelle = self.my_marty.my_marty.get_ground_sensor_reading("left")
+                couleur_detectee = self.detecter_couleur(valeur_actuelle)
+                QMessageBox.information(self, "Couleur ?", f"Valeur mesurée : {valeur_actuelle}, on a donc la couleur : {couleur_detectee}")
+                self.afficher_image_marty(1)
+
 
         except Exception :
             pass
@@ -234,16 +243,17 @@ class MaFenetre(QMainWindow):
             couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]
             # Calibration
             for couleur in couleurs:
-                self.my_marty.calibrage(couleur)
+                self.my_marty.calibrage(couleur, self)
             print("\nCalibration terminée")
             self.afficher_image_marty(1)
 
         elif key == 55:
-            input("\nPlace Marty sur une zone et appuie sur Entrée pour détecter la couleur...")
+            self.afficher_image_marty(3)
+            QMessageBox.information(self, "Couleur ?", "Place Marty sur la zone a détecter...")
             valeur_actuelle = self.my_marty.my_marty.get_ground_sensor_reading("left")
             couleur_detectee = self.detecter_couleur(valeur_actuelle)
-            print(f"Valeur mesurée : {valeur_actuelle}")
-            print(f"Couleur détectée : {couleur_detectee}")
+            QMessageBox.information(self, "Couleur ?", f"Valeur mesurée : {valeur_actuelle}, on a donc la couleur : {couleur_detectee}")
+            self.afficher_image_marty(1)
 
     def detecter_couleur(self, val_mes):
         if 0 <= val_mes <= 20:

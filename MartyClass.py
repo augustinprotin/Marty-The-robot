@@ -1,6 +1,7 @@
 import keyboard
 from martypy import Marty
-from PyQt6.QtCore import *
+from PyQt6.QtWidgets import QMessageBox
+
 
 
 class MartyTheRobot:
@@ -20,7 +21,7 @@ class MartyTheRobot:
 
     def goingRight(self):
         self.my_marty.stand_straight(200)
-        self.my_marty.sidestep("right", 2, 50)
+        self.my_marty.sidestep("right", 2, 45)
 
     def goingForward(self):
         # for i in range(0, 2):
@@ -58,8 +59,11 @@ class MartyTheRobot:
             self.my_marty.disco_color('blue')
             self.my_marty.eyes('wiggle', 800)
 
-    def calibrage(self, couleur_a_calibrer):
-        input(f"\nPlace Marty sur la zone '{couleur_a_calibrer}' et appuie sur Entree pour calibrer...")
+    def calibrage(self, couleur_a_calibrer, fenetre ):
+
+        #pb au moment de l'affichage de la texte box
+
+        QMessageBox.information(fenetre, f"\nPlace Marty sur la zone '{couleur_a_calibrer}'")
         valeur = self.my_marty.get_ground_sensor_reading("left")
         print(f"Valeur détectée pour '{couleur_a_calibrer}' : {valeur}")
         self.seuils_couleurs[couleur_a_calibrer] = valeur

@@ -175,6 +175,16 @@ class MaFenetre(QMainWindow):
 
             elif (nom == "lecture danse"):
                 self.my_marty.celebration()
+
+            elif (nom == "calibrage"):
+                self.afficher_image_marty(3)
+                couleurs = ["noir", "bleu fonce", "bleu clair", "rouge", "rose", "jaune", "vert"]
+                # Calibration
+                for couleur in couleurs:
+                    self.my_marty.calibrage(couleur, self)
+                print("\nCalibration terminée")
+                self.afficher_image_marty(1)
+
         except Exception :
             pass
         #elif (nom == "clavier"):

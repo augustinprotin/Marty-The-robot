@@ -187,10 +187,8 @@ class MaFenetre(QMainWindow):
 
             elif (nom == "quelle-couleur"):
                 self.afficher_image_marty(3)
-                QMessageBox.information(self, "Couleur ?", "Place Marty sur la zone a détecter...")
-                valeur_actuelle = self.my_marty.my_marty.get_ground_sensor_reading("left")
-                couleur_detectee = self.detecter_couleur(valeur_actuelle)
-                QMessageBox.information(self, "Couleur ?", f"Valeur mesurée : {valeur_actuelle}, on a donc la couleur : {couleur_detectee}")
+                QMessageBox.information(self, "Quelle Couleur ?", "Place Marty sur la zone a détecter...")
+                self.my_marty.reconnaitre_couleur(self)
                 self.afficher_image_marty(1)
 
 

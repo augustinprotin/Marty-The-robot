@@ -34,6 +34,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
         self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
+        self.ajouter_bouton("down", "images/down.png", 1300, 0)
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -50,57 +51,50 @@ class MaFenetre(QMainWindow):
         self.bouton.clicked.connect(self.connecterALIp)
 
         self.texte_saisi = ""  # variable pour stocker le texte
+    
+    from PyQt5.QtCore import QEventLoop, QTimer
 
-    def afficher_image_marty(self,perdu_connect=0):
-        # Image
-        try :
+    def afficher_image_marty(self, perdu_connect=0):
+        """
+        Affiche une image et un texte selon l'état perdu_connect.
+        Reste bloquante pendant duree_ms millisecondes.
+        """
+        try:
             print("clear")
             self.image_label.clear()
-            #self.text_label.clear()
         except Exception as e:
-            #si il y a une image, il la clear avant et initialise le texte
-            #self.texte_label = QLabel("Marty est déconnecté", self)
             print(e)
-            
-        if(perdu_connect == 1):
-            self.image_label = QLabel(self)
-            pixmap = QPixmap("images/heureux.png")
-            self.image_label.setPixmap(pixmap)
-            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
-            self.image_label.show()
-            
-            print("affichage du sprite 1")
-            #Message
-            self.texte_label.setText("Marty est connecté") # = QLabel("Marty est connecté", self)
-            self.texte_label.setGeometry(255,30, 200, 30)
 
-        if(perdu_connect == 0):
-            self.image_label = QLabel(self)
-            pixmap = QPixmap("images/perdu.png")
-            self.image_label.setPixmap(pixmap)
-            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
-            
-            print("affichage du sprite 0")
-            self.image_label.show()
-            #Message
-            self.texte_label = QLabel("Marty est déconnecté", self)
-            self.texte_label.setGeometry(255,30, 200, 30)
+        images = {
+            0: "images/perdu.png",
+            1: "images/heureux.png",
+            2: "images/mouvement.png",
+            3: "images/couleur.png"
+        }
 
-        if(perdu_connect == 2):
+        image_path = images.get(perdu_connect)
+        if image_path:
             self.image_label = QLabel(self)
-            pixmap = QPixmap("images/mouvement.png")
+            pixmap = QPixmap(image_path)
             self.image_label.setPixmap(pixmap)
             self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
-            print("affichage du sprite 2")
             self.image_label.show()
+            print(f"affichage du sprite {perdu_connect}")
 
-        if(perdu_connect == 3):
-            self.image_label = QLabel(self)
-            pixmap = QPixmap("images/couleur.png")
-            self.image_label.setPixmap(pixmap)
-            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
-            print("affichage du sprite 3")
-            self.image_label.show()
+        # Texte selon la condition
+        if perdu_connect == 0:
+            texte = "Marty est déconnecté"
+        else:
+            texte = "Marty est connecté"
+
+        if hasattr(self, 'texte_label'):
+            self.texte_label.setText(texte)
+            self.texte_label.setGeometry(255, 30, 200, 30)
+        else:
+            self.texte_label = QLabel(texte, self)
+            self.texte_label.setGeometry(255, 30, 200, 30)
+            self.texte_label.show()
+
 
     def connecterALIp(self):
         self.texte_saisi = self.textbox.text()
@@ -132,7 +126,6 @@ class MaFenetre(QMainWindow):
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
                 self.afficher_image_marty(2)
-                time.sleep(2)
                 self.my_marty.goingForward()
                 self.afficher_image_marty(1)
 
@@ -175,8 +168,18 @@ class MaFenetre(QMainWindow):
 
             elif (nom == "lecture danse"):
                 self.my_marty.celebration()
+
+            elif (nom == "down"):
+                print("on s arrete")
+                try :
+                    self.my_marty.GetMarty().close()
+                except Exception as e :
+                    print(e)
+                self.afficher_image_marty(0)
+
         except Exception :
-            pass
+            
+            self.afficher_image_marty(0)
         #elif (nom == "clavier"):
         #    self.my_marty.check_keyboard(event)
 

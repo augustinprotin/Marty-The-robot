@@ -8,7 +8,6 @@ import keyboard
 #from PyQt6.QtCore import *
 from app import *
 #from calibrage import *
-
 #----------------- classe fenetre
 #a telecharger :
 # pip install PyQt6

@@ -49,15 +49,12 @@ class MartyTheRobot:
         if (emotion == 'angry'):
             self.my_marty.disco_color('red')
             self.my_marty.eyes('angry', 800)
-
         if (emotion == 'normal'):
             self.my_marty.disco_color('white')
             self.my_marty.eyes('normal', 800)
-
         if (emotion == 'wide'):
             self.my_marty.disco_color('green')
             self.my_marty.eyes((40), 800)
-
         if (emotion == 'wiggle'):
             self.my_marty.disco_color('blue')
             self.my_marty.eyes('wiggle', 800)
@@ -84,21 +81,14 @@ class MartyTheRobot:
         g = self.my_marty.get_color_sensor_value_by_channel(side, "green")
         b = self.my_marty.get_color_sensor_value_by_channel(side, "blue")
         couleur_actuelle = (r, g, b)
-
-        
-        self.my_marty.disco_color(couleur_actuelle) #on change la couleur des yeux
-        print (r,g,b)
-
-
         couleur_proche = "inconnue"
         distance_min = float("inf")
-
         for nom, ref_rgb in self.seuils_couleurs.items():
             dist = math.sqrt(sum((a - b) ** 2 for a, b in zip(couleur_actuelle, ref_rgb)))
             if dist < distance_min and dist < seuil:
                 distance_min = dist
                 couleur_proche = nom
-
+        self.my_marty.disco_color(couleur_actuelle) #on change la couleur des yeux
         QMessageBox.information(fenetre, "Quelle Couleur ?", f"Couleur détectée : {couleur_proche} (RGB = {couleur_actuelle})")
         return couleur_proche
 

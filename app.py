@@ -6,6 +6,7 @@ from PyQt6.QtCore import *
 import MartyClass
 from capteur_batterie import *
 from capteur_obstacle import *
+from lecture_real_feels import *
 import time
 
 class MaFenetre(QMainWindow):

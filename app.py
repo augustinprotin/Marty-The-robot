@@ -52,8 +52,6 @@ class MaFenetre(QMainWindow):
         self.bouton.clicked.connect(self.connecterALIp)
 
         self.texte_saisi = ""  # variable pour stocker le texte
-    
-    from PyQt5.QtCore import QEventLoop, QTimer
 
     def afficher_image_marty(self, perdu_connect=0):
         """

@@ -65,10 +65,3 @@ def ecriture_dominance(fichier):
 
 
 
-
-if __name__ == '__main__':
-    # Créer une instance de MartyTheRobot
-    #mon_marty = fenetre.getMartyFromWindow() + mettre fenetre en param d'entrées
-    #mon_marty = MartyTheRobot("wifi", "192.168.0.101")
-    #lecture_dominance(mon_marty)
-    ecriture_dominance("creation.dance")

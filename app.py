@@ -7,6 +7,7 @@ import MartyClass
 from capteur_batterie import *
 from capteur_obstacle import *
 from lecture_real_feels import *
+from lecture_dominance_dance import *
 import time
 
 class MaFenetre(QMainWindow):
@@ -156,10 +157,12 @@ class MaFenetre(QMainWindow):
                 capteur_obstacle(self)
 
             elif (nom == "lecture danse"):
-                self.my_marty.celebration()
+                lecture_dominance(self.my_marty)
 
             elif (nom == "lecture feels"):
                 lecture_feels(self.my_marty.my_marty)
+
+
 
 
             elif (nom == "down"):
@@ -250,6 +253,10 @@ class MaFenetre(QMainWindow):
         elif key == 56:
             lecture_feels(self.my_marty.my_marty)
             print("oui oui baguette")
+
+        elif key == 57:
+            lecture_dominance(self.my_marty)
+
 
     def detecter_couleur(self, val_mes):
         if 0 <= val_mes <= 20:

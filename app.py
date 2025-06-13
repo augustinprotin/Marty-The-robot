@@ -40,6 +40,12 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("down", "images/down.png", 800, 10)
         self.ajouter_bouton("ecr_feels", "images/ecriture.png", 800, 610)
         self.ajouter_bouton("ecr_dance", "images/ecriture.png", 900, 610)
+        self.ajouter_bouton("angry", "images/ecriture.png", 250, 250)
+        self.ajouter_bouton("normal", "images/ecriture.png", 250, 200)
+        self.ajouter_bouton("wiggle", "images/ecriture.png", 200, 250)
+        self.ajouter_bouton("wide", "images/ecriture.png", 150, 250)
+
+
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -189,6 +195,18 @@ class MaFenetre(QMainWindow):
 
             elif (nom =="ecr_dance"):
                 self.ecriture_dominance("danse_file.danse")
+
+            elif (nom == "angry"):
+                self.my_marty.looking('angry')
+
+            elif (nom == "wiggle"):
+                self.my_marty.looking('wiggle')
+
+            elif (nom == "normal"):
+                self.my_marty.looking('normal')
+
+            elif (nom == "wide"):
+                self.my_marty.looking('wide')
 
         except Exception :
             

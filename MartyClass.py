@@ -47,7 +47,7 @@ class MartyTheRobot:
 
     def looking(self, emotion):
         if (emotion == 'angry'):
-            self.my_marty.disco_color('red')
+            self.my_marty.disco_color("red")
             self.my_marty.eyes('angry', 800)
         if (emotion == 'normal'):
             self.my_marty.disco_color('white')

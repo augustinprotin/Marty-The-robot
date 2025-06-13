@@ -158,6 +158,10 @@ class MaFenetre(QMainWindow):
             elif (nom == "lecture danse"):
                 self.my_marty.celebration()
 
+            elif (nom == "lecture feels"):
+                lecture_feels(self.my_marty.my_marty)
+
+
             elif (nom == "down"):
                 print("on s arrete")
                 try :
@@ -242,6 +246,10 @@ class MaFenetre(QMainWindow):
             couleur_detectee = self.detecter_couleur(valeur_actuelle)
             QMessageBox.information(self, "Couleur ?", f"Valeur mesurée : {valeur_actuelle}, on a donc la couleur : {couleur_detectee}")
             self.afficher_image_marty(1)
+
+        elif key == 56:
+            lecture_feels(self.my_marty.my_marty)
+            print("oui oui baguette")
 
     def detecter_couleur(self, val_mes):
         if 0 <= val_mes <= 20:

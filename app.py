@@ -124,34 +124,22 @@ class MaFenetre(QMainWindow):
         try :
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
-                self.afficher_image_marty(3)
                 self.my_marty.goingForward()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-bas" ):
-                self.afficher_image_marty(2)
                 self.my_marty.goingBackward()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-gauche" ):
-                self.afficher_image_marty(2)
                 self.my_marty.goingLeft()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-droite"):
-                self.afficher_image_marty(2)
                 self.my_marty.goingRight()
-                self.afficher_image_marty(1)
 
             elif (nom == "tourner-gauche"):
-                self.afficher_image_marty(2)
                 self.my_marty.turnLeft()
-                self.afficher_image_marty(1)
 
             elif (nom == "tourner-droite"):
-                self.afficher_image_marty(2)
                 self.my_marty.turnRight()
-                self.afficher_image_marty(1)
 
             elif (nom == "emotions"):
                 self.my_marty.looking("angry")

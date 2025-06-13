@@ -87,6 +87,8 @@ class MartyTheRobot:
 
         
         self.my_marty.disco_color(couleur_actuelle) #on change la couleur des yeux
+        print (r,g,b)
+
 
         couleur_proche = "inconnue"
         distance_min = float("inf")

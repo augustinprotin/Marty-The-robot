@@ -36,6 +36,8 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 600)
         self.ajouter_bouton("batterie", "images/batterie.png", 900, 0)
         self.ajouter_bouton("down", "images/down.png", 800, 0)
+        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 900, 500)
+        self.ajouter_bouton("ecr_dance", "images/ecriture.png", 800, 500)
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -174,10 +176,8 @@ class MaFenetre(QMainWindow):
                 self.afficher_image_marty(1)
 
             elif (nom == "inter"):
-                self.afficher_image_marty(3)
                 QMessageBox.information(self, "Quelle Couleur ?", "Place Marty sur la zone a détecter...")
                 self.my_marty.reconnaitre_couleur(self)
-                self.afficher_image_marty(1)
 
 
         except Exception :

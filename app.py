@@ -38,7 +38,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 710)
         self.ajouter_bouton("batterie", "images/batterie.png", 900, 10)
         self.ajouter_bouton("down", "images/down.png", 800, 10)
-        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 800, 610)
+        self.ajouter_bouton("celebration", "images/celebration.png", 800, 610)
         self.ajouter_bouton("ecr_dance", "images/ecriture.png", 900, 610)
         self.ajouter_bouton("angry", "images/ecriture.png", 250, 250)
         self.ajouter_bouton("normal", "images/ecriture.png", 250, 200)
@@ -207,6 +207,9 @@ class MaFenetre(QMainWindow):
 
             elif (nom == "wide"):
                 self.my_marty.looking('wide')
+
+            elif (nom=="celebration"):
+                self.my_marty.celebration()
 
         except Exception :
             

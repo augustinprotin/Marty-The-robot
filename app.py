@@ -18,7 +18,7 @@ class MaFenetre(QMainWindow):
         # 🔽 Changer l’icône ici
         self.setWindowIcon(QIcon("images/icone.png"))  # ou .ico selon ton OS
         # 🔽 Appliquer une resolution
-        self.resize(1920, 1080)
+        self.setMinimumSize(1020, 830)
         # 🔽 Dictionnaire d images
         self.boutons = {}
         # Créer plusieurs images avec leur nom
@@ -31,11 +31,11 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("inter", "images/inter.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
-        self.ajouter_bouton("emotions", "images/emotions.png", 1350, 710)
-        self.ajouter_bouton("lecture danse", "images/lecture danse.png", 1400, 600)
-        self.ajouter_bouton("lecture feels", "images/lecture feels.png", 1300, 600)
-        self.ajouter_bouton("batterie", "images/batterie.png", 1400, 0)
-        self.ajouter_bouton("down", "images/down.png", 1300, 0)
+        self.ajouter_bouton("emotions", "images/emotions.png", 850, 710)
+        self.ajouter_bouton("lecture danse", "images/lecture danse.png", 900, 600)
+        self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 600)
+        self.ajouter_bouton("batterie", "images/batterie.png", 900, 0)
+        self.ajouter_bouton("down", "images/down.png", 800, 0)
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -78,7 +78,7 @@ class MaFenetre(QMainWindow):
             self.image_label = QLabel(self)
             pixmap = QPixmap(image_path)
             self.image_label.setPixmap(pixmap)
-            self.image_label.setGeometry(400, 100, pixmap.width(), pixmap.height())
+            self.image_label.setGeometry(350, 100, pixmap.width(), pixmap.height())
             self.image_label.show()
             print(f"affichage du sprite {perdu_connect}")
 

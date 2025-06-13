@@ -27,8 +27,8 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("fleche-gauche", "images/fleche-gauche.png", 30, 610)
         self.ajouter_bouton("fleche-droite", "images/fleche-droite.png", 230, 610)
         self.ajouter_bouton("calibrage", "images/calibrage.png", 30, 710)
-        self.ajouter_bouton("quelle-couleur", "images/interrogation.png", 100, 200)
-        self.ajouter_bouton("obstacle", "images/obstacle.png", 230, 710)
+        self.ajouter_bouton("obstacle", "images/obstacle.png", 130, 610)
+        self.ajouter_bouton("inter", "images/inter.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
         self.ajouter_bouton("emotions", "images/emotions.png", 1350, 710)
@@ -124,7 +124,7 @@ class MaFenetre(QMainWindow):
         try :
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
-                self.afficher_image_marty(2)
+                self.afficher_image_marty(3)
                 self.my_marty.goingForward()
                 self.afficher_image_marty(1)
 
@@ -185,7 +185,7 @@ class MaFenetre(QMainWindow):
                 print("\nCalibration terminée")
                 self.afficher_image_marty(1)
 
-            elif (nom == "quelle-couleur"):
+            elif (nom == "inter"):
                 self.afficher_image_marty(3)
                 QMessageBox.information(self, "Quelle Couleur ?", "Place Marty sur la zone a détecter...")
                 self.my_marty.reconnaitre_couleur(self)

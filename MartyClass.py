@@ -59,15 +59,6 @@ class MartyTheRobot:
             self.my_marty.disco_color('blue')
             self.my_marty.eyes('wiggle', 800)
 
-    '''def calibrage(self, couleur_a_calibrer, fenetre ):
-        #pb au moment de l'affichage de la texte box
-        QMessageBox.information(fenetre, "Calibration", f"Place Marty sur la zone '{couleur_a_calibrer}' et clique sur OK.")
-        #QMessageBox.information(fenetre, f"\nPlace Marty sur la zone '{couleur_a_calibrer}'")
-        print("le message aurait du s'afficher")
-        valeur = self.my_marty.get_ground_sensor_reading("left")
-        print(f"Valeur détectée pour '{couleur_a_calibrer}' : {valeur}")
-        self.seuils_couleurs[couleur_a_calibrer] = valeur'''
-
     def calibrage(self, couleur_a_calibrer, fenetre, side="left"):
         QMessageBox.information(fenetre, "Couleur ?", f"Placer Marty sur : {couleur_a_calibrer}")
         r = self.my_marty.get_color_sensor_value_by_channel(side, "red")
@@ -94,5 +85,3 @@ class MartyTheRobot:
 
     def GetMarty(self):
         return self.my_marty
-
-

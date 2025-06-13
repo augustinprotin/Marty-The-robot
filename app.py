@@ -37,8 +37,8 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 710)
         self.ajouter_bouton("batterie", "images/batterie.png", 900, 10)
         self.ajouter_bouton("down", "images/down.png", 800, 10)
-        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 900, 610)
-        self.ajouter_bouton("ecr_dance", "images/ecriture.png", 800, 610)
+        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 800, 610)
+        self.ajouter_bouton("ecr_dance", "images/ecriture.png", 900, 610)
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -180,6 +180,8 @@ class MaFenetre(QMainWindow):
                 QMessageBox.information(self, "Quelle Couleur ?", "Place Marty sur la zone a détecter...")
                 self.my_marty.reconnaitre_couleur(self)
 
+            elif (nom =="ecr_dance"):
+                self.ecriture_dominance("danse_file.danse")
 
         except Exception :
             
@@ -242,6 +244,9 @@ class MaFenetre(QMainWindow):
             couleur_detectee = self.detecter_couleur(valeur_actuelle)
             QMessageBox.information(self, "Couleur ?", f"Valeur mesurée : {valeur_actuelle}, on a donc la couleur : {couleur_detectee}")
             self.afficher_image_marty(1)
+        
+        elif key == 45:
+            self.ecriture_dominance("dominance.danse")
 
     def detecter_couleur(self, val_mes):
         if 0 <= val_mes <= 20:
@@ -258,3 +263,42 @@ class MaFenetre(QMainWindow):
             return "rose"
         elif 170 <= val_mes <= 200:
             return "jaune"
+
+    
+
+    def demander_texte(parent: QWidget, message: str) -> str:
+        texte, ok = QInputDialog.getText(parent, "Saisie", message)
+        if ok:
+            return texte.strip()
+        return ""
+
+    def ecriture_dominance(parent: QWidget, fichier_nom: str):
+        try:
+            with open(fichier_nom, "w") as fichier:
+                fichier.write("SEQ 3\n")
+
+                while True:
+                    direction = MaFenetre.demander_texte(parent, "Choisissez une direction (droite, gauche, avant, arrière) :").lower()
+
+                    while direction not in ["droite", "gauche", "avant", "arriere"]:
+                        QMessageBox.warning(parent, "Erreur", "Veuillez taper une direction valide (droite, gauche, avant, arrière).")
+                        direction =  MaFenetre.demander_texte(parent, "Choisissez une direction :").lower()
+
+                    distance =  MaFenetre.demander_texte(parent, "Choisissez un nombre de pas (1 à 3) :")
+
+                    if direction == "droite":
+                        fichier.write(distance + "R\n")
+                    elif direction == "gauche":
+                        fichier.write(distance + "L\n")
+                    elif direction == "avant":
+                        fichier.write(distance + "U\n")
+                    elif direction == "arriere":
+                        fichier.write(distance + "B\n")
+
+                    continuer =  MaFenetre.demander_texte(parent, "Voulez-vous écrire autre chose ? (o/n) :").lower()
+                    if continuer != 'o':
+                        QMessageBox.information(parent, "Terminé", "Fin du programme.")
+                        break
+
+        except Exception as e:
+            QMessageBox.critical(parent, "Erreur", f"Une erreur est survenue : {str(e)}")

@@ -32,11 +32,13 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("inter", "images/inter.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
-        self.ajouter_bouton("emotions", "images/emotions.png", 850, 710)
-        self.ajouter_bouton("lecture danse", "images/lecture danse.png", 900, 600)
-        self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 600)
-        self.ajouter_bouton("batterie", "images/batterie.png", 900, 0)
-        self.ajouter_bouton("down", "images/down.png", 800, 0)
+        self.ajouter_bouton("emotions", "images/emotions.png", 850, 510)
+        self.ajouter_bouton("lecture danse", "images/lecture danse.png", 900, 710)
+        self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 710)
+        self.ajouter_bouton("batterie", "images/batterie.png", 900, 10)
+        self.ajouter_bouton("down", "images/down.png", 800, 10)
+        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 900, 610)
+        self.ajouter_bouton("ecr_dance", "images/ecriture.png", 800, 610)
 
         #affiche marty pas connecté
         self.afficher_image_marty()
@@ -125,34 +127,22 @@ class MaFenetre(QMainWindow):
         try :
             print(f"✅ Clic sur le bouton : {nom}")
             if(nom == "fleche-haut"):
-                self.afficher_image_marty(3)
                 self.my_marty.goingForward()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-bas" ):
-                self.afficher_image_marty(2)
                 self.my_marty.goingBackward()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-gauche" ):
-                self.afficher_image_marty(2)
                 self.my_marty.goingLeft()
-                self.afficher_image_marty(1)
 
             elif(nom == "fleche-droite"):
-                self.afficher_image_marty(2)
                 self.my_marty.goingRight()
-                self.afficher_image_marty(1)
 
             elif (nom == "tourner-gauche"):
-                self.afficher_image_marty(2)
                 self.my_marty.turnLeft()
-                self.afficher_image_marty(1)
 
             elif (nom == "tourner-droite"):
-                self.afficher_image_marty(2)
                 self.my_marty.turnRight()
-                self.afficher_image_marty(1)
 
             elif (nom == "emotions"):
                 self.my_marty.looking("angry")
@@ -187,10 +177,8 @@ class MaFenetre(QMainWindow):
                 self.afficher_image_marty(1)
 
             elif (nom == "inter"):
-                self.afficher_image_marty(3)
                 QMessageBox.information(self, "Quelle Couleur ?", "Place Marty sur la zone a détecter...")
                 self.my_marty.reconnaitre_couleur(self)
-                self.afficher_image_marty(1)
 
 
         except Exception :

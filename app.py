@@ -38,7 +38,7 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 710)
         self.ajouter_bouton("batterie", "images/batterie.png", 900, 10)
         self.ajouter_bouton("down", "images/down.png", 800, 10)
-        self.ajouter_bouton("ecr_feels", "images/ecriture.png", 800, 610)
+        self.ajouter_bouton("celebration", "images/celebration.png", 800, 610)
         self.ajouter_bouton("ecr_dance", "images/ecriture.png", 900, 610)
 
         #affiche marty pas connecté
@@ -189,6 +189,9 @@ class MaFenetre(QMainWindow):
 
             elif (nom =="ecr_dance"):
                 self.ecriture_dominance("danse_file.danse")
+
+            elif (nom=="celebration"):
+                self.my_marty.celebration()
 
         except Exception :
             

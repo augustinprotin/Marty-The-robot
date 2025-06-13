@@ -11,6 +11,9 @@ class MartyTheRobot:
         self.my_marty = Marty(modeConnexion, IpAddress)
         self.seuils_couleurs = {}
 
+    def couleurDesYeux(self, r,g,b):
+        self.my_marty.disco_color(r,g,b)
+
     def celebration(self):
         self.my_marty.celebrate(4000)
         self.my_marty.dance()
@@ -83,6 +86,8 @@ class MartyTheRobot:
         g = self.my_marty.get_color_sensor_value_by_channel(side, "green")
         b = self.my_marty.get_color_sensor_value_by_channel(side, "blue")
         couleur_actuelle = (r, g, b)
+
+        MartyTheRobot.couleurDesYeux(couleur_actuelle) #on change la couleur des yeux
 
         couleur_proche = "inconnue"
         distance_min = float("inf")

@@ -33,7 +33,6 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("inter", "images/inter.png", 230, 710)
         self.ajouter_bouton("tourner-droite", "images/tourner-droite.png", 230, 510)
         self.ajouter_bouton("tourner-gauche", "images/tourner-gauche.png", 30, 510)
-        self.ajouter_bouton("emotions", "images/emotions.png", 850, 510)
         self.ajouter_bouton("lecture danse", "images/lecture danse.png", 900, 710)
         self.ajouter_bouton("lecture feels", "images/lecture feels.png", 800, 710)
         self.ajouter_bouton("batterie", "images/batterie.png", 900, 10)

@@ -7,7 +7,7 @@ def capteur_obstacle(fenetre):
     try:
         print('test')
         left_foot = fenetre.getMartyFromWindow().foot_obstacle_sensed('left')
-        right_foot = fenetre.getMartyFromWindow().foot_obstacle_sensed('left')
+        right_foot = fenetre.getMartyFromWindow().foot_obstacle_sensed('right')
     except Exception as e:
         QMessageBox.information(fenetre, "obstacle", f"Marty n est pas connecté\nErreur attrapée : {e}")
     else:

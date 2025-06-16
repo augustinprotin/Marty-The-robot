@@ -39,10 +39,10 @@ class MaFenetre(QMainWindow):
         self.ajouter_bouton("down", "images/down.png", 800, 10)
         self.ajouter_bouton("celebration", "images/celebration.png", 800, 610)
         self.ajouter_bouton("ecr_dance", "images/ecriture.png", 900, 610)
-        self.ajouter_bouton("angry", "images/ecriture.png", 250, 250)
-        self.ajouter_bouton("normal", "images/ecriture.png", 250, 200)
-        self.ajouter_bouton("wiggle", "images/ecriture.png", 200, 250)
-        self.ajouter_bouton("wide", "images/ecriture.png", 150, 250)
+        self.ajouter_bouton("angry", "images/en-colere.png", 900, 510)
+        self.ajouter_bouton("normal", "images/poker-face.png", 900, 410)
+        self.ajouter_bouton("wiggle", "images/clin-doeil.png", 800, 510)
+        self.ajouter_bouton("wide", "images/sourrire.png", 800, 410)
 
 
 
